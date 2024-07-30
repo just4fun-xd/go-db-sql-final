@@ -57,6 +57,10 @@ func (s ParcelStore) GetByClient(client int) ([]Parcel, error) {
 		}
 		res = append(res, p)
 	}
+
+	if err := rows.Err(); err != nil {
+		return res, err
+	}
 	return res, nil
 }
 
